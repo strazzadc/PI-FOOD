@@ -15,11 +15,12 @@ module.exports = (sequelize) => {
       unique: true
     },
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     spoonacularScore: {
       type: DataTypes.FLOAT(1),
+      allowNull: false,
       validate:{
         min: 0,
         max: 100
@@ -37,6 +38,9 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT  
     },
     image:{
+      type: DataTypes.STRING
+    },
+    dishTypes:{
       type: DataTypes.STRING
     }
   });

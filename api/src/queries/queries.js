@@ -5,8 +5,7 @@ async function getAllRecipes(){
     try{
         let recipes_API = await getAllRecipesAPI();
         let recipes_DB = await getAllRecipesDB();
-        
-        console.log(recipes_DB)
+
         return allRecipes = [...recipes_API, ...recipes_DB];
     }catch(error){
         console.log(error);
@@ -26,7 +25,7 @@ async function getRecipeById(id){
     }catch(error){
         console.log(error);
     }
-}
+};
 
 
 module.exports = { getAllRecipes, getRecipeById }

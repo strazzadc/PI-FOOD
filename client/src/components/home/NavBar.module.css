@@ -1,0 +1,221 @@
+.navbar {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: rgba(0, 0, 0, 0.891);
+    border: solid 1px black;
+    padding: 2%;
+    position: fixed;
+    margin-top: 10px;
+    width: 100%;
+    place-content: center;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.elements li {
+    float: left;
+    display: block;
+    color: wheat;
+    text-align: center;
+    text-decoration: none;
+    align-self: flex-start;
+}
+
+.links {
+    height: 30px;
+    border: transparent;
+    font-family: 'Radio Canada', sans-serif;
+    font-size: medium;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 10px;
+    align-self: flex-start;
+}
+
+.links:hover {
+    background-color: #cb997e;
+    color: rgb(244, 241, 241);
+}
+
+.contentSelect select {
+    cursor: pointer;
+    height: 30px;
+    font-family: 'Radio Canada', sans-serif;
+    font-size: 1em;
+    color: rgb(94, 94, 94);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    margin: 0 5px
+}
+
+.contentSelect select:hover {
+    background: rgba(145, 28, 28, 0.687);
+    color: rgb(71, 71, 71);
+    border-color: rgb(71, 71, 71);
+    color: #ffe8d6;
+}
+
+.contentSelect select option:hover {
+    background-color: #ffe8d6;
+}
+
+/* .links {
+    font-family: 'Radio Canada', sans-serif;
+    justify-content: flex-start;
+    justify-content: space-between;
+    border: solid 1px blue
+}
+
+.selects {
+    border: solid 1px red;
+    justify-content: center;
+} */
+
+
+/* .navbar {
+    overflow: hidden;
+    background-color: #ddbea9;
+    width: 100%;
+    height: 100%;
+    top: 0;
+} */
+
+/* .elements input {
+    padding: 6px;
+    margin-top: 16px;
+    font-size: 17px;
+    border: none;
+    background-color: #ffe8d6;
+    color: rgb(94, 94, 94)
+} */
+
+/* .container {
+    display: flex;
+    -webkit-box-pack: center;
+    place-content: center;
+    align-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.cardHome {
+    margin: 0 5px 0 5px;
+}
+
+.welcome {
+    border-radius: 4px;
+    background-color: #ddbea9;
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: x-large;
+    padding: 20px;
+    width: 350px;
+    transition: all 0.5s;
+    cursor: pointer;
+    left: 37%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.welcome span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.welcome span:after {
+    content: '\00ab';
+    opacity: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.welcome:hover span {
+    padding-left: 25px;
+}
+
+.welcome:hover {
+    background-color: #ffe8d6;
+}
+
+.welcome:hover span:after {
+    opacity: 1;
+    right: 0;
+} */
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+/* .NavLink{
+    text-decoration:none;
+    color: rgb(231, 216, 216);
+    
+}
+
+.NavLink:hover{
+    color: rgba(145, 28, 28, 0.59) !important;
+} */
+/* <ul className='navbar'>
+                    <li >
+                        <button onClick={e => { handleClick(e) }} className='elementNB' >
+                            Home <GiDogHouse />
+                        </button>
+                    </li>
+                    <li>
+                        <Link to='/dogs' ><button className='elementNB' >
+                            Create pupper <GiSittingDog />
+                        </button></Link>
+                    </li>
+                    <li className='content-select'>
+                        <select onChange={e => handleSortByName(e)}  >
+                            <option value='selected' hidden className='elementNB' >Sort breeds by name</option>
+                            <option value='asc'  >A - Z</option>
+                            <option value='desc'  >Z - A</option>
+                        </select>
+                    </li>
+                    <li className='content-select' >
+                        <select onChange={e => handleSortByWeight(e)}  >
+                            <option value='selected' hidden>Sort by weight</option>
+                            <option value='asc'>Lighter to heavier</option>
+                            <option value='desc'>Heavier to lighter</option>
+                        </select>
+                    </li>
+                    <li className='content-select' >
+                        <select onChange={e => handleFilterTemperaments(e)}  >
+                            <option key={0} value='all'>All temperaments</option>
+                            {allTemperaments?.sort(function (a, b) {
+                                if (a.name < b.name) return -1;
+                                if (a.name > b.name) return 1;
+                                return 0;
+                            }).map(el => {
+                                return (
+                                    <option key={el.id} value={el.name}>{el.name}</option>
+                                )
+                            })}
+                        </select>
+                    </li>
+                    <li className='content-select' >
+                        <select onChange={e => handleFilterOrigin(e)}  >
+                            <option value='all'>All breeds</option>
+                            <option value='api'>Existent breeds</option>
+                            <option value='created'>Created breeds</option>
+                        </select>
+                    </li>
+                    <li>
+                        <SearchBar />
+                    </li>
+                </ul> */

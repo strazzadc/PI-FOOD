@@ -1,0 +1,27 @@
+.searchBar{
+    display: flex;
+    align-items: space-between;
+}
+
+.button {
+    height: 40px;
+    background-color: rgba(190, 99, 99, 0.875);
+    border-radius: 28px;
+    width: 100px;
+    font-size: medium;
+    border-width: 2px;
+    cursor: pointer;
+    margin-right: 40px;
+}
+
+.button:hover {
+    border-width: 1px;
+    background-color: rgba(145, 28, 28, 0.687);
+    color: #f6eee8;
+}
+
+.input {
+    border-radius: 14px;
+    height: 30px;
+    margin-right: 10px;
+}

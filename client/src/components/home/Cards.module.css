@@ -1,0 +1,17 @@
+.background{
+    background-image: url(./home.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.cards{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5%; 
+    padding-top: 150px;
+}

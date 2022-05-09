@@ -1,0 +1,48 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background: rgba(236, 236, 236, 0.49);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    text-decoration: none;
+    height: 450px;
+    width: 350px;
+    padding: 15px 10px 0px 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.image {
+    width: 18rem;
+    height: 200px;
+    border-radius: 10px;
+    border:rgba(145, 28, 28, 0.59) solid 2px ;
+}
+
+
+.name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    text-decoration:none;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-family: 'Radio Canada', sans-serif;
+} 
+
+.dishes{
+    margin-top: -15px;  
+    font-family: 'Radio Canada', sans-serif;
+}
+
+.diets{
+    margin-top: -15px;
+    font-family: 'Radio Canada', sans-serif;
+} 
+
+.title{
+    font-family: 'Radio Canada', sans-serif;
+}
