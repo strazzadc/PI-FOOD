@@ -12,81 +12,107 @@ export const SORT_DIET = 'SORT_DIET';
 
 
 export function getRecipes() {
-    return function(dispatch){
-        return fetch(`http://localhost:3001/recipes`)
-            .then(res => res.json())
-            .then(recipes => {dispatch({type: GET_RECIPES, payload: recipes})})
+    try {
+        return function (dispatch) {
+            return fetch(`http://localhost:3001/recipes`)
+                .then(res => res.json())
+                .then(recipes => { dispatch({ type: GET_RECIPES, payload: recipes }) })
+        }
+    } catch (error) {
+        console.log(error);
     };
 };
 
-export function clear(){
-    return{
+export function clear() {
+    return {
         type: CLEAR
     };
 };
 
-export function getDiets(){
-    return fetch(`http://localhost:3001/types`)
+export function getDiets() {
+    try {
+        return fetch(`http://localhost:3001/types`)
             .then(res => res.json())
             .then(data => data)
+    } catch (error) {
+        console.log(error);
+    };
 };
 
-export function getProductDetail(id){
-    return function(dispatch){
-        return fetch(`http://localhost:3001/recipes/${id}`)
-            .then(res => res.json())
-            .then(recipe => {dispatch({type: GET_PRODUCT_DETAIL, payload: recipe})})
-        };
+export function getProductDetail(id) {
+    try {
+        return function (dispatch) {
+            return fetch(`http://localhost:3001/recipes/${id}`)
+                .then(res => res.json())
+                .then(recipe => { dispatch({ type: GET_PRODUCT_DETAIL, payload: recipe }) })
+        }
+    } catch (error) {
+        console.log(error);
+    };
 };
 
-export function createRecipe(payload){
-    return async function(){
-        try{
+export function createRecipe(payload) {
+    return async function () {
+        try {
             const post = await axios.post('http://localhost:3001/recipes', payload);
             return post;
-        }catch(error){
+        } catch (error) {
             console.log(error);
         };
     };
 };
 
-export function searchRecipe(name){
-    return function(dispatch){
-       
+export function searchRecipe(name) {
+    return function (dispatch) {
         return axios.get(`http://localhost:3001/recipes/?name=${name}`)
-        .then(res => dispatch({type: SEARCH_RECIPE, payload: res.data}))
-        .catch(error => {
-            if(error.response.status === 404) return alert(error.response.data.msg)
-            alert(error.message)
-        })
-        
-    };  
+            .then(res => dispatch({ type: SEARCH_RECIPE, payload: res.data }))
+            .catch(error => {
+                if (error.response.status === 404) return alert(error.response.data.msg)
+                alert(error.message)
+            })
+    };
 };
 
-export function sortAZ(payload){
-    return {
-        type: SORT_AZ,
-        payload: payload
-    }
+export function sortAZ(payload) {
+    try {
+        return {
+            type: SORT_AZ,
+            payload: payload
+        }
+    } catch (error) {
+        console.log(error);
+    };
 };
 
-export function sortScore(payload){
-    return {
-        type: SORT_SCORE,
-        payload: payload
-    }
+export function sortScore(payload) {
+    try {
+        return {
+            type: SORT_SCORE,
+            payload: payload
+        }
+    } catch (error) {
+        console.log(error);
+    };
 };
 
-export function sortHealthyScore(payload){
-    return {
-        type: SORT_HEALTHY_SCORE,
-        payload: payload
-    }
+export function sortHealthyScore(payload) {
+    try {
+        return {
+            type: SORT_HEALTHY_SCORE,
+            payload: payload
+        }
+    } catch (error) {
+        console.log(error);
+    };
 };
 
-export function sortDiet(payload){
-    return {
-        type: SORT_DIET,
-        payload: payload
-    }
+export function sortDiet(payload) {
+    try {
+        return {
+            type: SORT_DIET,
+            payload: payload
+        }
+    } catch (error) {
+        console.log(error);
+    };
 };

@@ -1,7 +1,6 @@
-import React, { useEffect, useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState} from 'react';
+import { useSelector } from 'react-redux';
 import RecipeCard from './RecipeCard';
-import { getRecipes, clear } from '../../redux/actions';
 import Pagination from '../pagination/Pagination';
 import NavBar from './NavBar';
 import styles from './Cards.module.css';
@@ -49,7 +48,7 @@ export default function AllRecipes({setCurrentPage, currentPage}){
                       />
                     </div>
                 ))
-                : [] 
+                : <h2>No recipes</h2> 
             }
             </div>
             <Pagination 

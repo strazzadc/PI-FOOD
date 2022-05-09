@@ -39,7 +39,7 @@ export default function CreateRecipe() {
     const [error, setError] = useState({});
     const [disabled, setDisabled] = useState(true);
     const [diets, setDiets] = useState([]);
-    const [check, setCheck] = useState(false);
+    
 
     //  para checkbox
     useEffect(() => {
@@ -48,11 +48,11 @@ export default function CreateRecipe() {
 
 
     useEffect(() => {
-        if (!equals(initialInput, Object.values(input)) && !Object.keys(error).length && check === true) {
+        if (!equals(initialInput, Object.values(input)) && !Object.keys(error).length) {
             setDisabled(false);
         }
 
-    }, [input, error, check]);
+    }, [input, error]);
 
 
     let handleChange = (e) => {
@@ -90,26 +90,23 @@ export default function CreateRecipe() {
         });
     };
 
+
     let handleDietChange = (e) => {
-        e.preventDefault();
-
-        if (check === false) {
-            setCheck(true);
-        } else {
-            setCheck(false);
-        };
-    };
-
-    let handleDietSubmit = (e) => {
-        e.preventDefault();
-
+       
         if (!input.diets.includes(e.target.value)) {
             setInput({
                 ...input,
                 diets: [...input.diets, e.target.value]
             });
+        }else{
+            setInput({
+                ...input,
+                diets: input.diets.filter(diet => diet !== e.target.value)
+            });
         };
+
     };
+
 
     return (
         <>
@@ -157,17 +154,17 @@ export default function CreateRecipe() {
                                 <ul>
                                     {diets.map(({ name }, index) => {
                                         return (
-                                            <li key={index}>
+                                            <li key={index} className={styles.diet}>
 
                                                 <input
                                                     type="checkbox"
                                                     id={index}
                                                     name={name}
                                                     value={name}
-                                                    onClick={handleDietSubmit}
+                                                    checked={input.diets.includes(name)}
                                                     onChange={handleDietChange}
                                                 />
-                                                <span>{name}</span>
+                                                <label htmlFor={index}>{name}</label>
 
                                             </li>
                                         )

@@ -65,10 +65,15 @@ body{
     list-style: none;
 }
 
+.check .diet {
+    align-items: left;
+}
+
 .checks ul li input{
     margin: auto;
     width: 15px;
     height: 15px;
+    cursor: pointer;  
 }
 
 .buttonCreate{

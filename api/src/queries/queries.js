@@ -6,7 +6,13 @@ async function getAllRecipes(){
         let recipes_API = await getAllRecipesAPI();
         let recipes_DB = await getAllRecipesDB();
 
-        return allRecipes = [...recipes_API, ...recipes_DB];
+        let allRecipes = [...recipes_API, ...recipes_DB];
+
+        if(allRecipes.length){
+            return allRecipes
+        }else{
+            alert('Sorry, please come back tomorrow!')
+        };
     }catch(error){
         console.log(error);
     };
