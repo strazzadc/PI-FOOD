@@ -37,9 +37,6 @@ export default function validate(state){
         errors.dishTypes = 'Should write unless one type of dish for this recipe'
     }
 
-    if(!state.diets){
-        errors.diets= 'diets are required: at least one type of diet to which it belongs';
-    };
-
     return errors;
 };
+

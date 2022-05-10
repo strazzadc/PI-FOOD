@@ -65,7 +65,7 @@ body{
     list-style: none;
 }
 
-.check .diet {
+.check ul li {
     align-items: left;
 }
 

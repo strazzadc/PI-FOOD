@@ -12,19 +12,18 @@ let equals = function (a1, a2) {
 
     for (var i = 0; i < a2.length; i++) {
         if (a1[i] instanceof Array && a2[i] instanceof Array) {
-            if (!a1[i].equals(a2[i])) return false;
+            if (!equals(a1[i], a2[i])) return false;
         } else if (a1[i] !== a2[i]) {
             return false;
         }
     }
     return true;
 };
-let initialInput = ['', '', '', 0, 0, '', ''];
+let initialInput = ['', '', '', 0, 0, '', '', []];
 
 export default function CreateRecipe() {
     const dispatch = useDispatch();
     const history = useHistory();
-
 
     const [input, setInput] = useState({
         name: '',
@@ -39,7 +38,7 @@ export default function CreateRecipe() {
     const [error, setError] = useState({});
     const [disabled, setDisabled] = useState(true);
     const [diets, setDiets] = useState([]);
-    
+
 
     //  para checkbox
     useEffect(() => {
@@ -48,20 +47,39 @@ export default function CreateRecipe() {
 
 
     useEffect(() => {
-        if (!equals(initialInput, Object.values(input)) && !Object.keys(error).length) {
+
+        if (!equals(initialInput, Object.values(input)) && !Object.keys(error).length && input.diets.length !== 0) {
             setDisabled(false);
+        } else {
+            setDisabled(true);
         }
 
     }, [input, error]);
 
 
+    let handleDietChange = (e) => {
+
+        if (!input.diets.includes(e.target.value)) {
+            setInput({
+                ...input,
+                diets: [...input.diets, e.target.value]
+            });
+        } else {
+            setInput({
+                ...input,
+                diets: input.diets.filter(diet => diet !== e.target.value)
+            });
+        };
+    };
+
     let handleChange = (e) => {
+
         setInput(prevState => {
             const newState = {
                 ...prevState,
                 [e.target.name]: e.target.value
             };
-
+            console.log('NEW STATE', newState)
             setError(validate(newState));
             return newState;
         });
@@ -88,23 +106,6 @@ export default function CreateRecipe() {
             dishTypes: '',
             diets: []
         });
-    };
-
-
-    let handleDietChange = (e) => {
-       
-        if (!input.diets.includes(e.target.value)) {
-            setInput({
-                ...input,
-                diets: [...input.diets, e.target.value]
-            });
-        }else{
-            setInput({
-                ...input,
-                diets: input.diets.filter(diet => diet !== e.target.value)
-            });
-        };
-
     };
 
 
@@ -154,19 +155,21 @@ export default function CreateRecipe() {
                                 <ul>
                                     {diets.map(({ name }, index) => {
                                         return (
-                                            <li key={index} className={styles.diet}>
+                                            <>
+                                                <li key={index} className={styles.diet}>
 
-                                                <input
-                                                    type="checkbox"
-                                                    id={index}
-                                                    name={name}
-                                                    value={name}
-                                                    checked={input.diets.includes(name)}
-                                                    onChange={handleDietChange}
-                                                />
-                                                <label htmlFor={index}>{name}</label>
-
-                                            </li>
+                                                    <input
+                                                        type="checkbox"
+                                                        id={index}
+                                                        name={name}
+                                                        value={name}
+                                                        checked={input.diets.includes(name)}
+                                                        onChange={handleDietChange}
+                                                    />
+                                                    <label htmlFor={index}>{name}</label>
+                                                </li>
+                                                {/* <output>{error?.diets || []}</output> */}
+                                            </>
                                         )
                                     })}
                                 </ul>

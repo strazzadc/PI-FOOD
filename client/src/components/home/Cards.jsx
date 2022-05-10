@@ -4,6 +4,7 @@ import RecipeCard from './RecipeCard';
 import Pagination from '../pagination/Pagination';
 import NavBar from './NavBar';
 import styles from './Cards.module.css';
+import { NavLink } from 'react-router-dom';
 
 export default function AllRecipes({setCurrentPage, currentPage}){   
     
@@ -36,7 +37,7 @@ export default function AllRecipes({setCurrentPage, currentPage}){
                 />
             </div>
             <div className={styles.cards}>    
-            { currentRecipes ?
+            { currentRecipes.length ?
                 currentRecipes.map(recipe => (    
                     <div key={recipe.id}>
                       <RecipeCard 
@@ -48,7 +49,9 @@ export default function AllRecipes({setCurrentPage, currentPage}){
                       />
                     </div>
                 ))
-                : <h2>No recipes</h2> 
+                : <div className={styles.gif}>
+                    <img src="http://www.gifde.com/js_pics_aux/descarga.php?descarga=si&c=gif/otros/decoracion/cargando-loading/&f=cargando-loading-046.gif"></img>
+                </div>
             }
             </div>
             <Pagination 

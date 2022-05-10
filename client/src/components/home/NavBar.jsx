@@ -10,7 +10,7 @@ export default function NavBar({ setOrder, setOrderScore, setOrderHealthyScore, 
 
     const dispatch = useDispatch();
     const [diets, setDiets] = useState([]);
-    //const [currentPage, setCurrentPage] = useState(1);
+    
 
     useEffect(() => {
         getDiets().then(response => setDiets(response));
