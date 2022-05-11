@@ -12,14 +12,12 @@ export const SORT_DIET = 'SORT_DIET';
 
 
 export function getRecipes() {
-    try {
-        return function (dispatch) {
-            return fetch(`http://localhost:3001/recipes`)
-                .then(res => res.json())
-                .then(recipes => { dispatch({ type: GET_RECIPES, payload: recipes }) })
-        }
-    } catch (error) {
-        console.log(error);
+
+    return function (dispatch) {
+        return fetch(`http://localhost:3001/recipes`)
+            .then(res => res.json())
+            .then(recipes => { dispatch({ type: GET_RECIPES, payload: recipes }) })
+            .catch(error => console.log(error));
     };
 };
 
@@ -30,32 +28,25 @@ export function clear() {
 };
 
 export function getDiets() {
-    try {
-        return fetch(`http://localhost:3001/types`)
-            .then(res => res.json())
-            .then(data => data)
-    } catch (error) {
-        console.log(error);
-    };
+    return fetch(`http://localhost:3001/types`)
+        .then(res => res.json())
+        .then(data => data)
+        .catch(error => console.log(error));
 };
 
 export function getProductDetail(id) {
-    try {
-        return function (dispatch) {
-            return fetch(`http://localhost:3001/recipes/${id}`)
-                .then(res => res.json())
-                .then(recipe => { dispatch({ type: GET_PRODUCT_DETAIL, payload: recipe }) })
-        }
-    } catch (error) {
-        console.log(error);
-    };
+    return function (dispatch) {
+        return fetch(`http://localhost:3001/recipes/${id}`)
+            .then(res => res.json())
+            .then(recipe => { dispatch({ type: GET_PRODUCT_DETAIL, payload: recipe }) })
+            .catch(error => console.log(error));
+    }
 };
 
 export function createRecipe(payload) {
     return async function () {
         try {
-            const post = await axios.post('http://localhost:3001/recipes', payload);
-            return post;
+            return await axios.post('http://localhost:3001/recipes', payload);
         } catch (error) {
             console.log(error);
         };
@@ -105,6 +96,7 @@ export function sortHealthyScore(payload) {
         console.log(error);
     };
 };
+
 
 export function sortDiet(payload) {
     try {

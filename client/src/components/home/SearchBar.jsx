@@ -14,8 +14,12 @@ export default function SearchBar() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    dispatch(searchRecipe(name));
-    setName('');
+    if(name.length){
+      dispatch(searchRecipe(name));
+      setName('');
+    } else{
+      alert('Please, insert an ingredient or a recipe to search')
+    }
 
   }
 

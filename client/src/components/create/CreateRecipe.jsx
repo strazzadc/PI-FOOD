@@ -123,40 +123,40 @@ export default function CreateRecipe() {
 
                             <label>Name: </label>
                             <input type="text" name="name" value={input.name} onChange={handleChange} required placeholder={`Recipe title`} />
-                            <output>{error?.name || ''}</output>
+                            <output className={styles.errors}>{error?.name || ''}</output>
 
 
                             <label>image's URL: </label>
                             <input type="url" name="image" value={input.image} onChange={handleChange} required placeholder={`image URL`} />
-                            <output>{error?.image || ''}</output>
+                            <output className={styles.errors}>{error?.image || ''}</output>
 
                             <label>Summary: </label>
                             <input type="text" name="summary" value={input.summary} onChange={handleChange} required placeholder={`Recipe summary`} />
-                            <output>{error?.summary || ''}</output>
+                            <output className={styles.errors}>{error?.summary || ''}</output>
 
                             <label>Score: </label>
                             <input type="number" name="spoonacularScore" value={input.spoonacularScore} onChange={handleChange} required placeholder={`Recipe puntuation`} />
-                            <output>{error?.spoonacularScore || ''}</output>
+                            <output className={styles.errors}>{error?.spoonacularScore || ''}</output>
 
                             <label>Healthy score: </label>
                             <input type="number" name="healthScore" value={input.healthScore} onChange={handleChange} required placeholder={`Recipe healthy puntuation`} />
-                            <output>{error?.healthScore || ''}</output>
+                            <output className={styles.errors}>{error?.healthScore || ''}</output>
 
                             <label>Steps: </label>
                             <input type="text" name="instructions" value={input.instructions} onChange={handleChange} required placeholder={`Step by step recipe`} />
-                            <output>{error?.instructions || ''}</output>
+                            <output className={styles.errors}>{error?.instructions || ''}</output>
 
                             <label>Dish Type: </label>
                             <input type="text" name="dishTypes" value={input.dishTypes} onChange={handleChange} required placeholder={`What dish type is this?`} />
-                            <output>{error?.dishTypes || ''}</output>
+                            <output className={styles.errors}>{error?.dishTypes || ''}</output>
 
                             <div className={styles.checks}>
                                 <label>Diet Types: </label>
                                 <ul>
                                     {diets.map(({ name }, index) => {
                                         return (
-                                            <>
-                                                <li key={index} className={styles.diet}>
+                                            <div key={index} >
+                                                <li className={styles.diet}>
 
                                                     <input
                                                         type="checkbox"
@@ -168,8 +168,7 @@ export default function CreateRecipe() {
                                                     />
                                                     <label htmlFor={index}>{name}</label>
                                                 </li>
-                                                {/* <output>{error?.diets || []}</output> */}
-                                            </>
+                                            </div>
                                         )
                                     })}
                                 </ul>

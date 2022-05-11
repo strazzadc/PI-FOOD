@@ -4,15 +4,15 @@ import RecipeCard from './RecipeCard';
 import Pagination from '../pagination/Pagination';
 import NavBar from './NavBar';
 import styles from './Cards.module.css';
-import { NavLink } from 'react-router-dom';
+
 
 export default function AllRecipes({setCurrentPage, currentPage}){   
     
   const [recipesPerPage] = useState(9);
-  
-  const [order, setOrder] = useState('');
-  const [orderScore, setOrderScore] = useState('');
-  const [orderHscore, setOrderHealthyScore] = useState('');
+                                                                        // eslint-disable-next-line
+  const [order, setOrder] = useState('');                               // eslint-disable-next-line
+  const [orderScore, setOrderScore] = useState('');                     // eslint-disable-next-line
+  const [orderHscore, setOrderHealthyScore] = useState('');             // eslint-disable-next-line
   const [orderDiets, setOrderDiets] = useState('');
   
   
@@ -46,11 +46,13 @@ export default function AllRecipes({setCurrentPage, currentPage}){
                         image={recipe.image}
                         dishes={recipe.dishTypes ? recipe.dishTypes : 'unknown'} 
                         diets={recipe.diets ? recipe.diets : 'unknown'} 
+                        score={recipe.spoonacularScore}
+                        healthScore={recipe.healthScore}
                       />
                     </div>
                 ))
                 : <div className={styles.gif}>
-                    <img src="http://www.gifde.com/js_pics_aux/descarga.php?descarga=si&c=gif/otros/decoracion/cargando-loading/&f=cargando-loading-046.gif"></img>
+                    <img src="http://www.gifde.com/js_pics_aux/descarga.php?descarga=si&c=gif/otros/decoracion/cargando-loading/&f=cargando-loading-046.gif" alt='Loading...'></img>
                 </div>
             }
             </div>

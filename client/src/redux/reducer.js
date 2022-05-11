@@ -85,7 +85,7 @@ export default function rootReducer(state = initialState, action) {
       };
 
     case SORT_SCORE:
-      const sortedRecipesScore = action.payload === "upward" ?
+      const sortedRecipesScore = action.payload === "falling" ?
         state.recipes.sort(function (a, b) {
           if (a.spoonacularScore > b.spoonacularScore) {
             return -1
@@ -111,7 +111,7 @@ export default function rootReducer(state = initialState, action) {
       };
 
     case SORT_HEALTHY_SCORE:
-      const sortedRecipesHealthyScore = action.payload === "upward" ?
+      const sortedRecipesHealthyScore = action.payload === "falling" ?
         state.recipes.sort(function (a, b) {
           if (a.healthScore > b.healthScore) {
             return -1
@@ -140,13 +140,12 @@ export default function rootReducer(state = initialState, action) {
       const allRecipes = state.recipes
      
       const sortedDiets = action.payload === "sort by DIET" ? state.recipes :
-      allRecipes.filter(recipe => {
-        
-        if(recipe.diets.length > 0 ){      
-          const str = recipe.diets.split(', ')   
-          return str.find(diet => diet === action.payload)
-        }         
-      })
+        allRecipes.filter(recipe => {     
+          const str = recipe.diets.split(', ')
+          if(str.includes(action.payload)){
+            return recipe;                                                                 // eslint-disable-next-line
+          } return
+        });
         
       return {
         ...state,

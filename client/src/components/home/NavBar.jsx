@@ -14,7 +14,11 @@ export default function NavBar({ setOrder, setOrderScore, setOrderHealthyScore, 
 
     useEffect(() => {
         getDiets().then(response => setDiets(response));
-    }, []);
+
+        return () => {
+            dispatch(clear())
+        }  
+    }, [dispatch]);
 
     let handleClickHome = (e) => {
         e.preventDefault();

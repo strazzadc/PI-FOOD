@@ -113,3 +113,7 @@ body{
     font-weight: bold;
     border: solid 0.5px #34372c;
 }
+
+.errors{
+    color: red;
+}
