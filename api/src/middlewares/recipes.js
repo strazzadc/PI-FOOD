@@ -1,6 +1,7 @@
 const { getAllRecipes, getRecipeById } = require('../queries/queries.js');
 const { Recipe, Diet } = require('../db');
 
+
 const getMiddlewareRecipes = async (req, res, next) => {
     const allRecipes = await getAllRecipes();
     const { name } = req.query;

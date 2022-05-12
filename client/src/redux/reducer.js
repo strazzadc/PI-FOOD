@@ -14,6 +14,7 @@ import {
 
 const initialState = {
   recipes: [],
+  allRecipes: [],
   diets: [],
   recipeDetail: []
 };
@@ -25,14 +26,16 @@ export default function rootReducer(state = initialState, action) {
     case GET_RECIPES:
       return {
         ...state,
-        recipes: [...state.recipes, ...action.payload]
+        recipes: [...state.recipes, ...action.payload],
+        allRecipes: [...state.recipes, ...action.payload]
       };
 
     case CLEAR:
       return {
         ...state,
         recipes: [],
-        recipeDetail: []
+        recipeDetail: [],
+        allRecipes: [],
       };
 
     case GET_DIET:
@@ -50,7 +53,8 @@ export default function rootReducer(state = initialState, action) {
     case CREATE_RECIPE:
       return {
         ...state,
-        recipes: [...state.recipes, ...action.payload]
+        recipes: [...state.recipes, ...action.payload],
+        allRecipes: [...state.recipes, ...action.payload]
       };
 
     case SEARCH_RECIPE:
@@ -78,10 +82,31 @@ export default function rootReducer(state = initialState, action) {
             return 1
           }
           return 0
+        });
+
+      const otherSortedRecipesName = action.payload === "upward" ?
+        state.allRecipes.sort(function (a, b) {
+          if (a.name.toLowerCase() > b.name.toLowerCase()) {
+            return 1
+          }
+          if (b.name.toLowerCase() > a.name.toLowerCase()) {
+            return -1
+          }
+          return 0
         })
+        : state.allRecipes.sort(function (a, b) {
+          if (a.name.toLowerCase() > b.name.toLowerCase()) {
+            return -1
+          }
+          if (b.name.toLowerCase() > a.name.toLowerCase()) {
+            return 1
+          }
+          return 0
+        });
+
       return {
         ...state,
-        recieps: sortedRecipesName
+        recipes: sortedRecipesName.length === otherSortedRecipesName.length ? otherSortedRecipesName : sortedRecipesName
       };
 
     case SORT_SCORE:
@@ -103,11 +128,31 @@ export default function rootReducer(state = initialState, action) {
             return -1
           }
           return 0
+        });
+
+      const otherSortedRecipesScore = action.payload === "falling" ?
+        state.allRecipes.sort(function (a, b) {
+          if (a.spoonacularScore > b.spoonacularScore) {
+            return -1
+          }
+          if (a.spoonacularScore < b.spoonacularScore) {
+            return 1
+          }
+          return 0
         })
+        : state.allRecipes.sort(function (a, b) {
+          if (a.spoonacularScore > b.spoonacularScore) {
+            return 1
+          }
+          if (a.spoonacularScore < b.spoonacularScore) {
+            return -1
+          }
+          return 0
+        });
 
       return {
         ...state,
-        recipes: sortedRecipesScore
+        recipes: sortedRecipesScore.length === otherSortedRecipesScore.length ? otherSortedRecipesScore : sortedRecipesScore
       };
 
     case SORT_HEALTHY_SCORE:
@@ -129,24 +174,43 @@ export default function rootReducer(state = initialState, action) {
             return -1
           }
           return 0
+        });
+
+      const otherSortedRecipesHealthyScore = action.payload === "falling" ?
+        state.allRecipes.sort(function (a, b) {
+          if (a.healthScore > b.healthScore) {
+            return -1
+          }
+          if (a.healthScore < b.healthScore) {
+            return 1
+          }
+          return 0
         })
+        : state.allRecipes.sort(function (a, b) {
+          if (a.healthScore > b.healthScore) {
+            return 1
+          }
+          if (a.healthScore < b.healthScore) {
+            return -1
+          }
+          return 0
+        });
 
       return {
         ...state,
-        recipes: sortedRecipesHealthyScore
+        recipes: sortedRecipesHealthyScore.length === otherSortedRecipesHealthyScore.length ? otherSortedRecipesHealthyScore : sortedRecipesHealthyScore
       };
 
     case SORT_DIET:
-      const allRecipes = state.recipes
-     
+
       const sortedDiets = action.payload === "sort by DIET" ? state.recipes :
-        allRecipes.filter(recipe => {     
+        state.recipes.filter(recipe => {
           const str = recipe.diets.split(', ')
-          if(str.includes(action.payload)){
+          if (str.includes(action.payload)) {
             return recipe;                                                                 // eslint-disable-next-line
           } return
         });
-        
+
       return {
         ...state,
         recipes: sortedDiets

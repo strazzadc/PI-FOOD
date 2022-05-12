@@ -6,7 +6,7 @@ export default function RecipeCard({ id, name, image, dishes, diets, score, heal
 
     return (
         <div className={styles.card}>
-            <NavLink to={`/recipes/${id}`} className={styles.name}>{name}</NavLink>
+            <NavLink to={`/recipes/${id}`} className={styles.name} >{name}</NavLink>
             <img src={image} alt='Img not Found' className={styles.image} />
             <div className={styles.textContainer}>
                 <h4 className={styles.title}>

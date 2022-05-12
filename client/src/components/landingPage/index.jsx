@@ -14,14 +14,3 @@ export default function LandingPage() {
         </div>
     )
 };
-
-
-
-
-
-// let dispatch = useDispatch();
-//     let recipes = useSelector(state => state.recipes);
-
-//     useEffect(()=>{
-//         if(recipes.length === 0 ) dispatch(getRecipes())
-//     },[])

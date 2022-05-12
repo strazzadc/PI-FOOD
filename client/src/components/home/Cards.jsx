@@ -6,32 +6,24 @@ import NavBar from './NavBar';
 import styles from './Cards.module.css';
 
 
-export default function AllRecipes({setCurrentPage, currentPage}){   
+export default function AllRecipes(){   
     
-  const [recipesPerPage] = useState(9);
-                                                                        // eslint-disable-next-line
-  const [order, setOrder] = useState('');                               // eslint-disable-next-line
-  const [orderScore, setOrderScore] = useState('');                     // eslint-disable-next-line
-  const [orderHscore, setOrderHealthyScore] = useState('');             // eslint-disable-next-line
-  const [orderDiets, setOrderDiets] = useState('');
-  
+    const [currentPage, setCurrentPage] = useState(1);                                                                                  
+    const [recipesPerPage] = useState(9);
   
   //Pagination
   const { recipes } = useSelector(state => state) 
   
-  const indexOfLastRecipe = currentPage * recipesPerPage;
-  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-  const currentRecipes = recipes?.slice(indexOfFirstRecipe, indexOfLastRecipe);
+  const lastRecipe = currentPage * recipesPerPage;
+  const firstRecipe = lastRecipe - recipesPerPage;
+  const currentRecipes = recipes?.slice(firstRecipe, lastRecipe);
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
-    
+   
     return(
         <div className={styles.background}>
             <div>
-                <NavBar setOrder = {setOrder} 
-                        setOrderScore = { setOrderScore} 
-                        setOrderHealthyScore = {setOrderHealthyScore}
-                        setOrderDiets = {setOrderDiets}
+                <NavBar 
                         setCurrentPage = {setCurrentPage}
                         currentPage = {currentPage}
                 />

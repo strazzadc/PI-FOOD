@@ -79,7 +79,7 @@ export default function CreateRecipe() {
                 ...prevState,
                 [e.target.name]: e.target.value
             };
-            console.log('NEW STATE', newState)
+            
             setError(validate(newState));
             return newState;
         });

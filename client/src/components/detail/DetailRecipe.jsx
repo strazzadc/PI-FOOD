@@ -17,6 +17,8 @@ export default function Detail() {
         dispatch(getProductDetail(id))
     }, [dispatch, id]);
 
+
+
     return (
         <div>
             

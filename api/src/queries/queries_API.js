@@ -14,7 +14,7 @@ async function getAllRecipesAPI() {
                 id: recipe.id,
                 name: recipe.title,
                 summary: recipe.summary,
-                spoonacularScore: recipe.spoonacularScore,
+                spoonacularScore: recipe.spoonacularScore, //aggregateLikes
                 healthScore: recipe.healthScore,
                 instructions: recipe.analyzedInstructions[0]?.steps.map(step => { return step.step }).join(' \n'),
                 image: recipe.image,

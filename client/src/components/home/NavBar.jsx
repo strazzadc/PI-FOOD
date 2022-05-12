@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import styles from './NavBar.module.css';
 
 
-export default function NavBar({ setOrder, setOrderScore, setOrderHealthyScore, setCurrentPage }) {
+export default function NavBar({ setCurrentPage }) {
 
     const dispatch = useDispatch();
     const [diets, setDiets] = useState([]);
@@ -31,21 +31,18 @@ export default function NavBar({ setOrder, setOrderScore, setOrderHealthyScore, 
         e.preventDefault();
         dispatch(sortAZ(e.target.value));
         setCurrentPage(1);
-        setOrder(`${e.target.value}`);
     };
 
     let handleChangeScore = (e) => {
         e.preventDefault();
         dispatch(sortScore(e.target.value));
         setCurrentPage(1);
-        setOrderScore(`${e.target.value}`);
     };
 
     let handleChangeHealthyScore = (e) => {
         e.preventDefault();
         dispatch(sortHealthyScore(e.target.value));
         setCurrentPage(1);
-        setOrderHealthyScore(`${e.target.value}`);
     };
 
     let handleChangeDiet = (e) => {
@@ -61,7 +58,7 @@ export default function NavBar({ setOrder, setOrderScore, setOrderHealthyScore, 
                     
                     <li>
                         <button onClick={handleClickHome} className={styles.links} >
-                            Home
+                            Reload
                         </button>
                     </li>
                     <li>
